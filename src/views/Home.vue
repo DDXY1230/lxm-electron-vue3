@@ -1,7 +1,6 @@
 <!--  -->
 
 <script setup>
-import {ref,reactive} from 'vue'
 import SearchBar from './SearchBar.vue'
 import Dialog from './Dialog.vue';
 import List from './list/List.vue';
@@ -9,7 +8,9 @@ import List from './list/List.vue';
 <template>
 <div class=''>
   <SearchBar></SearchBar>
-  <Dialog></Dialog>
+  <teleport to="body">
+    <Dialog></Dialog>
+  </teleport>
   <List></List>
 </div>
 </template>

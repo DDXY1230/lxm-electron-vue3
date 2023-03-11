@@ -7,3 +7,4 @@
 4. 安装一下pinia `npm i pinia -S` 装好之后就可以创建仓库啦
 5. 有个专门的包` npm i store2 -S` 实现本地持久化存储,不用原生的localstory,是因为这个插件根pinia搭配更高级,更好用
 6. 安装一下lodash `npm i lodash -D`
+7. 开始写路由了 ` npm i vue-router -D`

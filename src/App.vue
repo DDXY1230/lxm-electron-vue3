@@ -1,7 +1,7 @@
 <!--  -->
 <script setup>
 import { ref, reactive, provide } from "vue";
-import Home from "./views/Home.vue";
+import Header from "./views/Header.vue";
 
 const isShow = ref(false);
 const setIsShow = value => {
@@ -24,7 +24,8 @@ provide("search-keywords", {
 
 <template>
   <div class=''>
-    <Home></Home>
+    <Header></Header>
+    <router-view></router-view>
   </div>
 </template>
 
