@@ -1,17 +1,23 @@
 <!--  -->
 <script setup>
 import { ref, reactive, inject } from "vue";
+import _ from 'lodash'
 const { setIsShow } = inject("dialog-visible");
+
 const handleClick = () => {
-  setIsShow(true)
+  setIsShow(true);
 };
+const { setKeywords } = inject("search-keywords");
+const search = _.debounce((e) => {
+  setKeywords(e.target.value)
+},500)
 </script>
 
 <template>
   <div class='search-container'>
     <div class="button" @click="handleClick">+</div>
     <div class="input">
-      <input type="text" placeholder="请输入关键字">
+      <input type="text" placeholder="请输入关键字..." @keyup="search">
     </div>
   </div>
 </template>

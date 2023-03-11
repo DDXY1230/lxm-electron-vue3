@@ -5,15 +5,16 @@ import { ref } from "vue";
 import useWebsite from "./useWebsite";
 import useIndex from "./useIndex";
 
-const { websiteStore, handleDel } = useWebsite();
+const { websiteStore, handleDel, keywords } = useWebsite();
 const { currentIndex, handleItemClick } = useIndex();
+
 </script>
 
 <template>
   <div class=''>
-    <p id="no-item">暂无数据</p>
-    <div id="items">
-      <div @click="handleItemClick(i)" v-for="(ws,i) in websiteStore.websites" :class="{'read-item':true,'selected': currentIndex === i}" :key="ws.url">
+    <p id="no-item" v-if="websiteStore.find(keywords).length <= 0">暂无数据</p>
+    <div id="items" v-else>
+      <div @click="handleItemClick(i,ws.url)" v-for="(ws,i) in websiteStore.find(keywords)" :class="{'read-item':true,'selected': currentIndex === i}" :key="ws.url">
         <img :src="ws.screenshot" alt="">
         <h2>{{ ws.title }}</h2>
         <button @click="handleDel(ws.url)">X</button>

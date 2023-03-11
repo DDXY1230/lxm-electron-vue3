@@ -1,8 +1,9 @@
 import { ref } from "vue";
 const useIndex = () => {
   const currentIndex = ref(0);
-  const handleItemClick = (i) => {
+  const handleItemClick = (i,url) => {
     currentIndex.value = i;
+    // window.open(url, '_blank', 'width=1300,height=800')
   };
   return {
     currentIndex,

@@ -28,6 +28,14 @@ const useWebsiteStore = defineStore('websiteStore', {
       this.websites = this.websites.filter(i => i.url !== url)
       store('websites', this.websites)
     }
+  },
+  getters: {
+    find() {
+      return (keywords) => {
+        let result = this.websites.filter(i => i.title.indexOf(keywords) > -1)
+        return keywords ? result : this.websites;
+      }
+    }
   }
 
 })

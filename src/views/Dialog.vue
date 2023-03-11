@@ -34,7 +34,7 @@ const handleAddClick = async () => {
   <div class='dialog-wrap' v-if="isShow">
     <div class="content">
       <div class="input">
-        <input type="text" v-model="url" placeholder="请输入网址">
+        <input type="text" v-model="url" placeholder="请输入网址" @keyup.enter="handleAddClick">
       </div>
       <div class="btns">
         <button @click="handleAddClick" :disabled="isSubmit">添加</button>
