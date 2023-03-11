@@ -22,7 +22,12 @@ const getSource = (url) => {
 
         const image = await win.webContents.capturePage() // 截取网页的图片 nativeImage
         const screenshot = image.toDataURL() // 把抓取的图片转成一个base64的图片
-        console.log(screenshot)
+        if(image.isEmpty()) {
+          resolve({
+            msg: '无法访问该站点'
+          })
+          return
+        }
         resolve({
           title,
           screenshot,

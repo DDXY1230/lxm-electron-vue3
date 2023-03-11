@@ -25,7 +25,6 @@ const useWebsiteStore = defineStore('websiteStore', {
       this.websites = store.get('websites') ? store.get('websites') : []
     },
     deleteItem(url) {
-      // this.websites = _.dropWhile(this.websites, {url})
       this.websites = this.websites.filter(i => i.url !== url)
       store('websites', this.websites)
     }

@@ -1,21 +1,19 @@
 <!--  -->
 <script setup>
-import { ref, reactive, onMounted } from "vue";
-import useWebsiteStore from "@/store/websiteStore";
-const websiteStore = useWebsiteStore();
-onMounted(() => {
-  websiteStore.init();
-});
-const handleDel = url => {
-  websiteStore.deleteItem(url);
-};
+import { ref } from "vue";
+
+import useWebsite from "./useWebsite";
+import useIndex from "./useIndex";
+
+const { websiteStore, handleDel } = useWebsite();
+const { currentIndex, handleItemClick } = useIndex();
 </script>
 
 <template>
   <div class=''>
     <p id="no-item">暂无数据</p>
     <div id="items">
-      <div class="read-item selected" v-for="ws in websiteStore.websites" :key="ws.url">
+      <div @click="handleItemClick(i)" v-for="(ws,i) in websiteStore.websites" :class="{'read-item':true,'selected': currentIndex === i}" :key="ws.url">
         <img :src="ws.screenshot" alt="">
         <h2>{{ ws.title }}</h2>
         <button @click="handleDel(ws.url)">X</button>

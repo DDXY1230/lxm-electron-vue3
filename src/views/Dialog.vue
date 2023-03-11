@@ -1,21 +1,33 @@
 <!--  -->
 
 <script setup>
-import { ref, reactive, inject } from "vue";
+import { ref, reactive, inject,onMounted,onUpdated } from "vue";
 import useWebsiteStore from "@/store/websiteStore";
 const websiteStore = useWebsiteStore();
 const { isShow, setIsShow } = inject("dialog-visible");
-
+onMounted(() => {
+  console.log('Dialog挂载了')
+})
 const url = ref("");
 const isSubmit = ref(false);
+const handleCancelClick = () => {
+  url.value = ''
+  setIsShow(false)
+}
 const handleAddClick = async () => {
   // 接下来传给主进程
   isSubmit.value = true;
   const result = await myApi.sendUrl(url.value);
+  if (result.msg) {
+    myApi.alert(result.msg);
+    isSubmit.value = false;
+    return;
+  }
   websiteStore.add(result);
   isSubmit.value = false;
-  setIsShow(false);
+  handleCancelClick()
 };
+
 </script>
 
 <template>
@@ -26,7 +38,7 @@ const handleAddClick = async () => {
       </div>
       <div class="btns">
         <button @click="handleAddClick" :disabled="isSubmit">添加</button>
-        <button @click="setIsShow(false)" :disabled="isSubmit">取消</button>
+        <button @click="handleCancelClick" :disabled="isSubmit">取消</button>
       </div>
     </div>
   </div>
