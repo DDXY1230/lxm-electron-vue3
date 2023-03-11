@@ -1,0 +1,57 @@
+<!--  -->
+<script setup>
+import { ref, reactive, inject } from "vue";
+const { setIsShow } = inject("dialog-visible");
+const handleClick = () => {
+  setIsShow(true)
+};
+</script>
+
+<template>
+  <div class='search-container'>
+    <div class="button" @click="handleClick">+</div>
+    <div class="input">
+      <input type="text" placeholder="请输入关键字">
+    </div>
+  </div>
+</template>
+
+<style lang='stylus' scoped>
+div.search-container {
+  box-sizing: border-box;
+  height: 60px;
+  background: #d3d3d3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .button {
+    width: 40px;
+    height: 40px;
+    background-color: #1e90ff;
+    padding-left: 0;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    cursor: default;
+  }
+
+  .input {
+    flex: 1;
+    height: 36px;
+    padding: 0 10px;
+    width: 100%;
+
+    input {
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      border: solid 1px #cccccc;
+      border-radius: 5px;
+      padding: 0 10px;
+    }
+  }
+}
+</style>
