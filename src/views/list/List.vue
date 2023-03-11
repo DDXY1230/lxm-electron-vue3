@@ -17,7 +17,7 @@ const { currentIndex, handleItemClick } = useIndex();
       <div @click="handleItemClick(i,ws.url)" v-for="(ws,i) in websiteStore.find(keywords)" :class="{'read-item':true,'selected': currentIndex === i}" :key="ws.url">
         <img :src="ws.screenshot" alt="">
         <h2>{{ ws.title }}</h2>
-        <button @click="handleDel(ws.url)">X</button>
+        <button @click.stop="handleDel(ws.url)">X</button>
       </div>
     </div>
   </div>

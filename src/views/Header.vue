@@ -33,6 +33,7 @@ import { ref, reactive } from "vue";
   display: flex;
   background: #1e90ff;
   height: 44px;
+  
 
   div {
     padding-left: 10px;

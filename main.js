@@ -3,9 +3,13 @@ const WinState = require('electron-win-state').default
 const path = require('path')
 require('./controller/getSource')
 require('./controller/alert')
+require('./controller/openWindow')
  const winState = new WinState({
     defaultWidth: 1000,
-    defaultHeight: 800
+    defaultHeight: 800,
+    electronStoreOptions: {
+      name: 'window-state-main' // 与其他进程的窗口状态隔离,不然会在关闭后重新打开混淆了
+    }
   })
 const createWindow = () => {
  
