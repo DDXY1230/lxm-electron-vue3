@@ -11,3 +11,8 @@
 8. 安装got`npm i got -S` 通过图片资源获取资源
 9. `npm i image-type -S` 获取图片扩展名
 10. `npm i randomstring -D` 获取一个随机数
+
+11. 应用程序部署
+    - 安装打包工具`npm i electron-builder -D`
+    - 配置package.json=>script "app:dist": "electron-builder"
+     
