@@ -1,6 +1,7 @@
 const { app, BrowserWindow } = require('electron')
 const WinState = require('electron-win-state').default
 const path = require('path')
+const createTray = require('./tray')
 require('./controller/getSource')
 require('./controller/alert')
 require('./controller/openWindow')
@@ -30,6 +31,7 @@ const createWindow = () => {
   win.on('ready-to-show', () => {
     win.show()
   })
+  createTray(app, win)
 }
 app.whenReady().then(() => {
   createWindow()
