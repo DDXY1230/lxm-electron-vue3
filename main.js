@@ -5,6 +5,7 @@ require('./controller/getSource')
 require('./controller/alert')
 require('./controller/openWindow')
 require('./controller/getFileList')
+require('./controller/buildMenu')
  const winState = new WinState({
     defaultWidth: 1000,
     defaultHeight: 800,

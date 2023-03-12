@@ -5,6 +5,8 @@ import { ref, reactive, inject,onMounted,onUpdated } from "vue";
 import useWebsiteStore from "@/store/websiteStore";
 const websiteStore = useWebsiteStore();
 const { isShow, setIsShow } = inject("dialog-visible");
+const emits = defineEmits(['updateAct'])
+
 onMounted(() => {
   console.log('Dialog挂载了')
 })
@@ -13,6 +15,7 @@ const isSubmit = ref(false);
 const handleCancelClick = () => {
   url.value = ''
   setIsShow(false)
+  emits('updateAct')
 }
 const handleAddClick = async () => {
   // 接下来传给主进程

@@ -1,16 +1,28 @@
 <!--  -->
 <script setup>
-import { ref, reactive, inject } from "vue";
-import _ from 'lodash'
+import { ref, reactive, inject, watch } from "vue";
+import _ from "lodash";
 const { setIsShow } = inject("dialog-visible");
-
+const props = defineProps(["action"]);
 const handleClick = () => {
   setIsShow(true);
 };
 const { setKeywords } = inject("search-keywords");
-const search = _.debounce((e) => {
-  setKeywords(e.target.value)
-},500)
+const search = _.debounce(e => {
+  setKeywords(e.target.value);
+}, 500);
+watch(
+  () => props.action,
+  val => {
+    console.log(val);
+    if (val === "add") {
+      handleClick();
+    }
+  }
+);
+defineExpose({
+  handleClick
+});
 </script>
 
 <template>

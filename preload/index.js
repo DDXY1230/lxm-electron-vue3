@@ -18,10 +18,25 @@ const getFileList = async () => {
   console.log(filelist)
   return filelist
 }
+const openDialog = () => {
+  console.log('openDialog')
+  ipcRenderer.send('on-opendialog-event')
+}
+const onRendererEvent = (cb) => { // 主进程发过来的,与以上的不同,以上都是触发主进程
+  return new Promise((resolve, reject) => {
+    ipcRenderer.on('on-renderer-event',(e,msg) => {
+      console.log('onRendererEvent', msg)
+      if(msg == 'add') cb()
+      resolve(msg)
+    })
+  })
+}
 contextBridge.exposeInMainWorld('myApi', {
   sendUrl,
   alert,
   open, // 打开子窗口
   close,// 关闭子窗口
-  getFileList
+  getFileList,
+  openDialog,
+  onRendererEvent
 })
