@@ -8,3 +8,6 @@
 5. 有个专门的包` npm i store2 -S` 实现本地持久化存储,不用原生的localstory,是因为这个插件根pinia搭配更高级,更好用
 6. 安装一下lodash `npm i lodash -D`
 7. 开始写路由了 ` npm i vue-router -D`
+8. 安装got`npm i got -S` 通过图片资源获取资源
+9. `npm i image-type -S` 获取图片扩展名
+10. `npm i randomstring -D` 获取一个随机数
