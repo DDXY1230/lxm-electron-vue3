@@ -25,7 +25,17 @@ const createWindow = () => {
     preload: path.resolve(__dirname, 'preload/index.js')
     }
   })
-  win.loadURL('http://localhost:5173/')
+  // win.loadURL('http://localhost:5173/')
+ if(app.isPackaged) {
+    // 打包
+    win.loadFile(path.join(__dirname, '../index.html'))
+  }else {
+    // 开发
+  console.log('===>',`http://${process.env['VITE_DEV_SERVER_HOSTNAME']}:${process.env[`VITE_DEV_SERVER_PORT`]}`)
+  win.loadURL(`http://${process.env['VITE_DEV_SERVER_HOSTNAME']}:${process.env[`VITE_DEV_SERVER_PORT`]}`)
+  }
+
+
   win.webContents.openDevTools()
   winState.manage(win)
   win.on('ready-to-show', () => {
