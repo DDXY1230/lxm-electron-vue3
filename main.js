@@ -26,7 +26,8 @@ const createWindow = () => {
     }
   })
   // win.loadURL('http://localhost:5173/')
- if(app.isPackaged) {
+  // if(app.isPackaged) {// 这句话可能有bug不准确
+  if(process.env.NODE_ENV != 'development') { // 上面的有bug所以用这一句
     // 打包
     win.loadFile(path.join(__dirname, '../index.html'))
   }else {
